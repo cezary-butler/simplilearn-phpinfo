@@ -1,14 +1,8 @@
 <?php
 
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
+require __DIR__ . '/vendor/autoload.php';
 
-// create a log channel
-$log = new Logger('name');
-$log->pushHandler(new StreamHandler('path/to/your.log', Logger::WARNING));
-
-// add records to the log
+$log = new Monolog\Logger('name');
+$log->pushHandler(new Monolog\Handler\StreamHandler('app.log', Monolog\Logger::WARNING));
 $log->warning('Foo');
-$log->error('Bar');
-
 ?>
