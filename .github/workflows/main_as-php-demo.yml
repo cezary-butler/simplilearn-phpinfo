@@ -11,16 +11,11 @@
   
   jobs:
     build:
-      runs-on: ubuntu-latest
+      runs-on: php
   
       steps:
         - uses: actions/checkout@v2
   
-        - name: Setup PHP
-          uses: shivammathur/setup-php@v2
-          with:
-            php-version: '7.3'
-            
         - name: Check if composer.json exists
           id: check_files
           uses: andstor/file-existence-action@v1
@@ -38,7 +33,7 @@
             path: .
   
     deploy:
-      runs-on: ubuntu-latest
+      runs-on: php
       needs: build
       environment:
         name: 'production'
